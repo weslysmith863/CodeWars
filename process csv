@@ -1,0 +1,22 @@
+"""
+Prompt:
+Given a CSV file containing a single line of comma-separated key-value pairs 
+in the format "key:value,key:value,...", read the file, split the line, and 
+output a dictionary of the values.
+
+Sample Input (from file):
+a:100,b:200,c:300
+
+Expected Output:
+{'a': 100, 'b': 200, 'c': 300}
+"""
+
+def parse_csv_to_dict(file_path):
+    result = {}
+    with open(file_path, 'r') as file:
+        line = file.readline().strip()
+        pairs = line.split(',')
+        for pair in pairs:
+            key, value = pair.split(':')
+            result[key] = int(value)
+    return result
